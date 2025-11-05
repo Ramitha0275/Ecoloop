@@ -78,21 +78,32 @@ const EcoAlternativesPage: React.FC<EcoAlternativesPageProps> = ({ updateEcoScor
       updateEcoScore(10); // Award points for finding alternatives
       setIsLoading(false);
 
-      const updatedAlternatives = await Promise.all(
-        initialResults.alternatives.map(async (alt) => {
-          try {
-            const base64Image = await generateImageFromPrompt(alt.imagePrompt);
-            return { ...alt, imageData: `data:image/png;base64,${base64Image}` };
-          } catch (imgError) {
-            console.error(`Failed to generate image for ${alt.name}:`, imgError);
-            return { ...alt, imageData: '' }; // Empty string indicates failure
-          }
-        })
-      );
-      
-      setResults({
-        ...initialResults,
-        alternatives: updatedAlternatives,
+      // Progressive image loading
+      initialResults.alternatives.forEach(async (alt, index) => {
+        try {
+          const base64Image = await generateImageFromPrompt(alt.imagePrompt);
+          const newImageData = `data:image/png;base64,${base64Image}`;
+          setResults(currentResults => {
+            if (!currentResults) return null;
+            const newAlternatives = [...currentResults.alternatives];
+            const targetAlt = newAlternatives.find(a => a.name === alt.name);
+            if (targetAlt) {
+              targetAlt.imageData = newImageData;
+            }
+            return { ...currentResults, alternatives: newAlternatives };
+          });
+        } catch (imgError) {
+          console.error(`Failed to generate image for ${alt.name}:`, imgError);
+          setResults(currentResults => {
+            if (!currentResults) return null;
+            const newAlternatives = [...currentResults.alternatives];
+            const targetAlt = newAlternatives.find(a => a.name === alt.name);
+            if (targetAlt) {
+              targetAlt.imageData = ''; // Indicate failure
+            }
+            return { ...currentResults, alternatives: newAlternatives };
+          });
+        }
       });
 
     } catch (e) {
