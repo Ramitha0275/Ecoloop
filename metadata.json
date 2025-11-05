@@ -1,0 +1,7 @@
+{
+  "name": "Ecoloop",
+  "description": "A virtual waste-to-wealth manager that helps you identify waste, find nearby recycling shops, and discover eco-friendly product alternatives.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
