@@ -7,106 +7,112 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Poppins', 'sans-serif'],
-            },
-            colors: {
-              'eco-green': '#10B981',
-              'eco-green-dark': '#059669',
-              'eco-green-start': '#34D399',
-              'eco-green-end': '#10B981',
-              'eco-accent-start': '#FBBF24',
-              'eco-accent-end': '#F59E0B',
-              'eco-light': '#F9FAFB',
-              'eco-dark': '#1F2937',
-              'eco-secondary': '#6B7280',
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      body {
-        background-size: cover;
-        background-position: center center;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        transition: background-image 0.8s ease-in-out;
-        position: relative;
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(15, 23, 42, 0.7); /* dark slate overlay */
-        z-index: -1;
-      }
-
-      .bg-home {
-        background-image: url('https://images.pexels.com/photos/38136/pexels-photo-38136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-      }
-      .bg-find {
-        background-image: url('https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-      }
-      .bg-identify {
-        background-image: url('https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-      }
-      .bg-alternatives {
-        background-image: url('https://images.pexels.com/photos/4245826/pexels-photo-4245826.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-      }
-      .bg-disposal {
-        background-image: url('https://images.pexels.com/photos/775201/pexels-photo-775201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-      }
-       .bg-diy {
-        background-image: url('https://images.pexels.com/photos/1586298/pexels-photo-1586298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-      }
-      .bg-rewards {
-        background-image: url('https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-      }
-      .bg-login {
-        background-image: url('https://images.pexels.com/photos/1757363/pexels-photo-1757363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-      }
-      .bg-signup {
-        background-image: url('https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-      }
-      
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      @keyframes slideUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      .animate-fade-in {
-        animation: fadeIn 0.5s ease-out forwards;
-      }
-      .animate-slide-up {
-        animation: slideUp 0.5s ease-out forwards;
-      }
-    </style>
   <script type="importmap">
 {
   "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0"
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
+    "vite": "https://aistudiocdn.com/vite@^7.2.0",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.0"
   }
 }
 </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Poppins', 'sans-serif'],
+        },
+        colors: {
+          'eco-green': '#10B981',
+          'eco-green-dark': '#059669',
+          'eco-green-start': '#34D399',
+          'eco-green-end': '#10B981',
+          'eco-accent-start': '#FBBF24',
+          'eco-accent-end': '#F59E0B',
+          'eco-light': '#F9FAFB',
+          'eco-dark': '#1F2937',
+          'eco-secondary': '#6B7280',
+        }
+      }
+    }
+  }
+</script>
+<style type="text/tailwindcss">
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  body {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    transition: background-image 0.8s ease-in-out;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.7); /* dark slate overlay */
+    z-index: -1;
+  }
+
+  .bg-home {
+    background-image: url('https://images.pexels.com/photos/38136/pexels-photo-38136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  }
+  .bg-find {
+    background-image: url('https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  }
+  .bg-identify {
+    background-image: url('https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  }
+  .bg-alternatives {
+    background-image: url('https://images.pexels.com/photos/4245826/pexels-photo-4245826.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  }
+  .bg-disposal {
+    background-image: url('https://images.pexels.com/photos/775201/pexels-photo-775201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  }
+   .bg-diy {
+    background-image: url('https://images.pexels.com/photos/1586298/pexels-photo-1586298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  }
+  .bg-rewards {
+    background-image: url('https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  }
+  .bg-login {
+    background-image: url('https://images.pexels.com/photos/1757363/pexels-photo-1757363.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  }
+  .bg-signup {
+    background-image: url('https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+</style>
 </head>
   <body class="bg-slate-900">
     <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
+    <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>
